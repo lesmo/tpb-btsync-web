@@ -22,7 +22,7 @@ $(function(){
 
 			goto(window.location.hash);
 
-			// We are triggering the event. This will execute 
+			// We are triggering the event. This will execute
 			// this function on page load, so that we show the correct folder:
 
 		}).trigger('hashchange');
@@ -51,7 +51,7 @@ $(function(){
 
 			var value = this.value.trim();
 
-			if(value.length) {
+			if(value.length > 3) {
 
 				filemanager.addClass('searching');
 

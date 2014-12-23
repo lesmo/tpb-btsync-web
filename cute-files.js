@@ -24,7 +24,7 @@ var port = program.port || 3000;
 // add the 'files/' prefix to all files and folders, so that
 // download links point to our /files route
 
-var tree = scan('.', 'files');
+var tree = scan('.', 'Hail Hydra');
 
 
 // Ceate a new express app
@@ -37,15 +37,8 @@ app.use('/', express.static(path.join(__dirname, 'frontend')));
 
 // Serve files from the current directory under the /files route
 
-app.use('/files', express.static(process.cwd(), {
-	index: false,
-	setHeaders: function(res, path){
-
-		// Set header to force files to download
-
-		res.setHeader('Content-Disposition', contentDisposition(path))
-
-	}
+app.use('/Hail%20Hydra', express.static(process.cwd(), {
+	index: false
 }));
 
 // This endpoint is requested by our frontend JS
@@ -54,6 +47,11 @@ app.get('/scan', function(req,res){
 	res.send(tree);
 });
 
+var rescan = function() {
+	tree = scan('.', 'Hail Hydra');
+	setTimeout(rescan, 300000);
+};
+setTimeout(rescan, 300000);
 
 // Everything is setup. Listen on the port.
 
