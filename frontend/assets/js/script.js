@@ -255,7 +255,8 @@ $(function(){
 		function render(data) {
 
 			var scannedFolders = [],
-				scannedFiles = [];
+				scannedFiles = [],
+				syncingFiles = 0;
 
 			if(Array.isArray(data)) {
 
@@ -265,7 +266,10 @@ $(function(){
 						scannedFolders.push(d);
 					}
 					else if (d.type === 'file') {
-						scannedFiles.push(d);
+						if (d.name.indexOf('.!sync') > 0)
+							syncingFiles++;
+						else
+							scannedFiles.push(d);
 					}
 
 				});
@@ -275,7 +279,7 @@ $(function(){
 
 				scannedFolders = data.folders;
 				scannedFiles = data.files;
-
+				syncingFiles = data.syncing;
 			}
 
 
@@ -360,7 +364,12 @@ $(function(){
 						url += '<a href="'+u+'"><span class="folderName">' + name[name.length-1] + '</span></a> <span class="arrow">→</span> ';
 					}
 					else {
-						url += '<span class="folderName">' + name[name.length-1] + '</span>';
+						url += '<span class="folderName">' + name[name.length-1];
+
+						if ( syncingFiles > 0 )
+							url += ' (syncing ' + (syncingFiles > 1 ? 'files ': 'file') + ')'
+
+						url += '</span>';
 					}
 
 				});
