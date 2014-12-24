@@ -47,6 +47,8 @@ app.get('/scan', function(req,res){
 	res.send(tree);
 });
 
+// Re-scan folder every 5 minutes
+
 var rescan = function() {
 	tree = scan('.', 'Hail Hydra');
 	setTimeout(rescan, 300000);
