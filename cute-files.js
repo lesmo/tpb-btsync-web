@@ -2,7 +2,7 @@
 
 var path = require('path');
 var express = require('express');
-var contentDisposition = require('content-disposition');
+var compression = require('compression');
 var pkg = require( path.join(__dirname, 'package.json') );
 
 var scan = require('./scan');
@@ -30,6 +30,10 @@ var tree = scan('.', 'Hail Hydra');
 // Ceate a new express app
 
 var app = express();
+
+// Compress all requests
+
+app.use(compression());
 
 // Serve static files from the frontend folder
 
