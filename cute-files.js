@@ -24,7 +24,7 @@ var port = program.port || 3000;
 // add the 'files/' prefix to all files and folders, so that
 // download links point to our /files route
 
-var tree = JSON.stringify(scan('.', 'Hail Hydra'));
+var tree = scan('.', 'Hail Hydra');
 
 
 // Ceate a new express app
@@ -55,7 +55,7 @@ app.get('/scan', function(req,res){
 // Re-scan folder every 5 minutes
 
 var rescan = function() {
-	tree = JSON.stringify(scan('.', 'Hail Hydra'));
+	tree = scan('.', 'Hail Hydra');
 	setTimeout(rescan, 300000);
 };
 setTimeout(rescan, 300000);
