@@ -266,7 +266,7 @@ $(function(){
 						scannedFolders.push(d);
 					}
 					else if (d.type === 'file') {
-						if (d.name.indexOf('.!sync') > 0)
+						if (d.name.match(/\.!sync$/i))
 							syncingFiles++;
 						else
 							scannedFiles.push(d);
