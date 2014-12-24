@@ -23,8 +23,8 @@ function walk(dir, prefix){
 
 	return fs.readdirSync(dir).filter(function(f){
 
-		// Ignore hidden files + .!sync
-		return f && f[0] != '.' && f.indexOf('.!sync') == -1;
+		// Ignore hidden files
+		return f && f[0] != '.';
 
 	}).map(function(f){
 
