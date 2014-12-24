@@ -48,8 +48,7 @@ app.use('/Hail%20Hydra', express.static(process.cwd(), {
 // This endpoint is requested by our frontend JS
 
 app.get('/scan', function(req,res){
-	res.write(tree);
-	res.flush();
+	res.send(tree);
 });
 
 // Re-scan folder every 5 minutes
