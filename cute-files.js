@@ -2,7 +2,7 @@
 
 var path = require('path');
 var express = require('express');
-var compression = require('compress');
+var compression = require('compression');
 var pkg = require( path.join(__dirname, 'package.json') );
 
 var scan = require('./scan');
