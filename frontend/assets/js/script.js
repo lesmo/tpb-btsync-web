@@ -284,10 +284,10 @@ $(function(){
 			fileList.empty().hide();
 
 			if(!scannedFolders.length && !scannedFiles.length) {
-				filemanager.find('.nothingfound').show();
+				filemanager.find('.nothingfound').fadeIn();
 			}
 			else {
-				filemanager.find('.nothingfound').hide();
+				filemanager.find('.nothingfound').fadeOut();
 			}
 
 			if(scannedFolders.length) {
