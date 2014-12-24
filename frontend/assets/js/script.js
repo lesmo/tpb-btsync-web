@@ -291,7 +291,7 @@ $(function(){
 				filemanager.find('.nothingfound').fadeIn();
 			}
 			else {
-				filemanager.find('.nothingfound').fadeOut();
+				filemanager.find('.nothingfound').hide();
 			}
 
 			if(scannedFolders.length) {
@@ -367,7 +367,7 @@ $(function(){
 						url += '<span class="folderName">' + name[name.length-1];
 
 						if ( syncingFiles > 0 )
-							url += ' (syncing ' + (syncingFiles > 1 ? 'files ': 'file') + ')'
+							url += ' (syncing ' + syncingFiles + ' ' + (syncingFiles > 1 ? 'files ': 'file') + ')'
 
 						url += '</span>';
 					}
