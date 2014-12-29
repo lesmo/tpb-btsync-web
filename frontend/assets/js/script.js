@@ -329,14 +329,42 @@ $(function(){
 					var fileSize = bytesToSize(f.size),
 						name = escapeHTML(f.name),
 						fileType = name.split('.'),
-						icon = '<span class="icon file"></span>';
+						icon = $('<span/>', {'class': 'icon file'}), // '<span class="icon file"></span>';
+						link = $('<a></a>', {href: '#', title: f.path, 'class': 'files'}),
+						file = $('<li class="files"></li>');
 
 					fileType = fileType.length > 1 ? fileType[fileType.length-1] : '';
 
-					icon = '<span class="icon file f-' + fileType + '">' + fileType + '</span>';
+					icon.addClass('f-' + fileType).html(fileType);
 
-					var file = $('<li class="files"><a href="'+ f.path+'" title="'+ f.path +'" class="files">'+icon+'<span class="name">'+ name +'</span> <span class="details">'+fileSize+'</span></a></li>');
-					file.appendTo(fileList);
+					if ( name.match(/\.magnet$/i) ) {
+
+						link.click(function(e) {
+							var _this = $(this).parent().css('opacity', 0.3);
+
+							$.get(f.path, function(data) {
+								window.location = data;
+								_this.css('opacity', 1);
+							});
+
+							e.preventDefault();
+							return false;
+						});
+
+					} else {
+
+						link.attr('href', f.path);
+					}
+
+					fileList.append(
+						file.append(
+							link.append(
+								icon,
+								$('<span/>', {'class':'name'}).html(name),
+								$('<span/>', {'class':'details'}).html(name)
+							)
+						)
+					);
 				});
 
 			}
