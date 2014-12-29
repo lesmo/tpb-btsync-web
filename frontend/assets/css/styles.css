@@ -16,7 +16,12 @@
 -------------------------*/
 
 body {
-	background-color: #500e0f;
+	background-color: #000;
+	background-image: url(../bg.jpg);
+	background-attachment: fixed;
+	background-position: center bottom;
+	background-size: cover;
+
 	font: 14px normal Arial, Helvetica, sans-serif;
 	z-index: -4;
 }
