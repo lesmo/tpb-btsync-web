@@ -21,7 +21,7 @@ body {
 	z-index: -4;
 }
 
-body > video {
+body > video, body > img {
 	position: fixed;
 	right: 0;
 	top: 0;
